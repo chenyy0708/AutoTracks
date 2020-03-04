@@ -1,0 +1,2 @@
+include ':app', ':track-android'
+rootProject.name='AutoTrack'
