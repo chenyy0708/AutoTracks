@@ -11,6 +11,7 @@ import android.app.Activity
 class ViewTag<T : Activity>(
     var id: Int = -1,
     val fromClazz: Class<T>,
+    var isFragment: Boolean = false,
     var toClazz: Class<*>? = null,
     var subscribe: Subscribe? = null
 ) {
@@ -29,6 +30,10 @@ class ViewTag<T : Activity>(
     fun toActivity(activity: Class<*>): ViewTag<*> {
         this.toClazz = activity
         return this
+    }
+
+    fun isFragment(isFragment: Boolean) {
+        this.isFragment = isFragment
     }
 
     fun subscribe(subscribe: Subscribe) {

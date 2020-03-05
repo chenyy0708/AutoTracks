@@ -32,7 +32,7 @@ public class AutoTrackHelper {
                     // 只有目标Activity的view id才响应
                     Context viewContext;
                     // 适配Fragment的View
-                    if (view.getContext() instanceof ContextThemeWrapper) {
+                    if (viewTag.isFragment()) {
                         viewContext = ((ContextThemeWrapper) view.getContext()).getBaseContext();
                     } else {
                         viewContext = view.getContext();
