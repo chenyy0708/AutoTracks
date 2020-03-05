@@ -2,6 +2,7 @@ package com.minic.track_android.code;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 
 import java.util.List;
@@ -29,7 +30,13 @@ public class AutoTrackHelper {
             for (ViewTag<?> viewTag : viewTags) {
                 if (viewTag.getId() == view.getId()) {
                     // 只有目标Activity的view id才响应
-                    Context viewContext = view.getContext();
+                    Context viewContext;
+                    // 适配Fragment的View
+                    if (view.getContext() instanceof ContextThemeWrapper) {
+                        viewContext = ((ContextThemeWrapper) view.getContext()).getBaseContext();
+                    } else {
+                        viewContext = view.getContext();
+                    }
                     // 取出目标Activity，判断是否为空
                     Class<?> toClazz = viewTag.getToClazz();
                     if (toClazz != null) { // 需要统计从A页面->B页面的点击事件
