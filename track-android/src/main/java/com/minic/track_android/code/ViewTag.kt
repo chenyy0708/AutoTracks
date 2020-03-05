@@ -32,8 +32,9 @@ class ViewTag<T : Activity>(
         return this
     }
 
-    fun isFragment(isFragment: Boolean) {
+    fun isFragment(isFragment: Boolean): ViewTag<T> {
         this.isFragment = isFragment
+        return this
     }
 
     fun subscribe(subscribe: Subscribe) {
